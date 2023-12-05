@@ -64,11 +64,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/Times New Roman.png" alt="Times New Roman" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/Times New Roman_Noise.jpg" alt="Times New Roman" style="width:80%">
+    <br/>
 	Times New Roman
 </p>
+
 
 
 
@@ -80,11 +81,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Mitra.png" alt="B Mitra" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Mitra_Noise.jpg" alt="B Mitra" style="width:80%">
+    <br/>
     B Mitra
 </p>
+
 
 
 
@@ -96,11 +98,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/Tahoma.png" alt="Tahoma" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/Tahoma_Noise.jpg" alt="Tahoma" style="width:80%">
+    <br/>
     Tahoma
 </p>
+
 
 
 
@@ -112,11 +115,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/Arial.png" alt="Arial" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/Arial_Noise.jpg" alt="Arial" style="width:80%">
+    <br/>
     Arial
 </p>
+
 
 
 
@@ -128,11 +132,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Homa.png" alt="B Homa" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Homa_Noise.jpg" alt="B Homa" style="width:80%">
+    <br/>
     B Homa
 </p>
+
 
 
 
@@ -144,11 +149,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Nazanin.png" alt="B Nazanin" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Nazanin_Noise.jpg" alt="B Nazanin" style="width:80%">
+    <br/>
     B Nazanin
 </p>
+
 
 
 
@@ -160,11 +166,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Traffic.png" alt="B Traffic" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Traffic_Noise.jpg" alt="B Traffic" style="width:80%">
+    <br/>
     B Traffic
 </p>
+
 
 
 
@@ -176,11 +183,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Lotus.png" alt="B Lotus" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Lotus_Noise.jpg" alt="B Lotus" style="width:80%">
+    <br/>
     B Lotus
 </p>
+
 
 
 
@@ -192,11 +200,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Yagut.png" alt="B Yagut" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Yagut_Noise.jpg" alt="B Yagut" style="width:80%">
+    <br/>
     B Yagut
 </p>
+
 
 
 
@@ -208,11 +217,12 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/B Zar.png" alt="B Zar" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/B Zar_Noise.jpg" alt="B Zar" style="width:80%">
+    <br/>
     B Zar
 </p>
+
 
 
 
@@ -224,9 +234,9 @@ Additionally, various fonts have been showcased in the images to illustrate font
 <p align="center">
   <img  src="Sample Images/Calibri.png" alt="Calibri" style="width:80%">
 </p>
-
 <p align="center">
   <img  src="Sample Images/Calibri_Noise.jpg" alt="Calibri" style="width:80%">
+    <br/>
     Calibri
 </p>
 
