@@ -2,9 +2,9 @@
 
 ## Introduction
 
-The dataset comprises 264 Persian sentences presented in 11 distinct fonts. Each sentence is transformed into an individual image aligned in a single line. Subsequently, these images underwent a combination process with various types of noise to create the final dataset. For your reference, please review the Noises directory for a detailed overview of the applied noise types.
+The dataset comprises 264 Persian sentences presented in 11 distinct fonts. Each sentence is transformed into an individual image aligned in a single line. Subsequently, these images underwent a combination process with various types of noise to create the final dataset.  The dataset is suitable for training LSTM neural networks in optical character recognition (OCR) tasks.  The LSTM model can effectively learn the sequential patterns within the sentences and fonts. For your reference, please review the Noises directory for a detailed overview of the applied noise types.
 
-Every sample within the dataset is accompanied by a corresponding text file. These text files contain the character and the coordinates of it present in the image. The format within each line of the text file follows a structured pattern: *<Starting pixel index>* _*<Ending pixel index>* _*<Character>*. This format precisely delineates each character's position within the image matrix.
+Every sample within the dataset is accompanied by a corresponding text file. These text files contain the character and the coordinates of it present in the image. The format within each line of the text file follows a structured pattern: \<Starting pixel index> _\<Ending pixel index> _\<Character>. This format precisely delineates each character's position within the image matrix.
 
 In the following image, red lines are used to denote the beginning and ending pixels of each character.
 
@@ -13,10 +13,21 @@ In the following image, red lines are used to denote the beginning and ending pi
 <p align="center">
   <img  src="Sample Images/Chunked sentence.jpg" alt="MainForm">
 </p>
-
 <p align="center">
   <img  src="Sample Images/Chunked characters.jpg" alt="MainForm">
+    Character Boundaries
 </p>
+
+
+
+<p align="center">
+  <img  src="Sample Images/Window 10px.png" alt="LSTM" style="width:80%">
+	<br/>
+	LSTM - window 10px
+</p>
+
+
+
 
 
 
@@ -51,12 +62,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### Times New Roman
 
 <p align="center">
-  <img  src="Sample Images/Times New Roman.png" alt="Times New Roman">
+  <img  src="Sample Images/Times New Roman.png" alt="Times New Roman" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/Times New Roman_Noise.jpg" alt="Times New Roman">
+  <img  src="Sample Images/Times New Roman_Noise.jpg" alt="Times New Roman" style="width:80%">
+	Times New Roman
 </p>
+
 
 
 
@@ -65,12 +78,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Mitra
 
 <p align="center">
-  <img  src="Sample Images/B Mitra.png" alt="B Mitra">
+  <img  src="Sample Images/B Mitra.png" alt="B Mitra" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Mitra_Noise.jpg" alt="B Mitra">
+  <img  src="Sample Images/B Mitra_Noise.jpg" alt="B Mitra" style="width:80%">
+    B Mitra
 </p>
+
 
 
 
@@ -79,12 +94,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### Tahoma
 
 <p align="center">
-  <img  src="Sample Images/Tahoma.png" alt="Tahoma">
+  <img  src="Sample Images/Tahoma.png" alt="Tahoma" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/Tahoma_Noise.jpg" alt="Tahoma">
+  <img  src="Sample Images/Tahoma_Noise.jpg" alt="Tahoma" style="width:80%">
+    Tahoma
 </p>
+
 
 
 
@@ -93,12 +110,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### Arial
 
 <p align="center">
-  <img  src="Sample Images/Arial.png" alt="Arial">
+  <img  src="Sample Images/Arial.png" alt="Arial" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/Arial_Noise.jpg" alt="Arial">
+  <img  src="Sample Images/Arial_Noise.jpg" alt="Arial" style="width:80%">
+    Arial
 </p>
+
 
 
 
@@ -107,12 +126,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Homa
 
 <p align="center">
-  <img  src="Sample Images/B Homa.png" alt="B Homa">
+  <img  src="Sample Images/B Homa.png" alt="B Homa" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Homa_Noise.jpg" alt="B Homa">
+  <img  src="Sample Images/B Homa_Noise.jpg" alt="B Homa" style="width:80%">
+    B Homa
 </p>
+
 
 
 
@@ -121,12 +142,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Nazanin
 
 <p align="center">
-  <img  src="Sample Images/B Nazanin.png" alt="B Nazanin">
+  <img  src="Sample Images/B Nazanin.png" alt="B Nazanin" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Nazanin_Noise.jpg" alt="B Nazanin">
+  <img  src="Sample Images/B Nazanin_Noise.jpg" alt="B Nazanin" style="width:80%">
+    B Nazanin
 </p>
+
 
 
 
@@ -135,12 +158,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Traffic
 
 <p align="center">
-  <img  src="Sample Images/B Traffic.png" alt="B Traffic">
+  <img  src="Sample Images/B Traffic.png" alt="B Traffic" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Traffic_Noise.jpg" alt="B Traffic">
+  <img  src="Sample Images/B Traffic_Noise.jpg" alt="B Traffic" style="width:80%">
+    B Traffic
 </p>
+
 
 
 
@@ -149,12 +174,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Lotus
 
 <p align="center">
-  <img  src="Sample Images/B Lotus.png" alt="B Lotus">
+  <img  src="Sample Images/B Lotus.png" alt="B Lotus" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Lotus_Noise.jpg" alt="B Lotus">
+  <img  src="Sample Images/B Lotus_Noise.jpg" alt="B Lotus" style="width:80%">
+    B Lotus
 </p>
+
 
 
 
@@ -163,12 +190,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Yagut
 
 <p align="center">
-  <img  src="Sample Images/B Yagut.png" alt="B Yagut">
+  <img  src="Sample Images/B Yagut.png" alt="B Yagut" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Yagut_Noise.jpg" alt="B Yagut">
+  <img  src="Sample Images/B Yagut_Noise.jpg" alt="B Yagut" style="width:80%">
+    B Yagut
 </p>
+
 
 
 
@@ -177,12 +206,14 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### B Zar
 
 <p align="center">
-  <img  src="Sample Images/B Zar.png" alt="B Zar">
+  <img  src="Sample Images/B Zar.png" alt="B Zar" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/B Zar_Noise.jpg" alt="B Zar">
+  <img  src="Sample Images/B Zar_Noise.jpg" alt="B Zar" style="width:80%">
+    B Zar
 </p>
+
 
 
 
@@ -191,10 +222,11 @@ Additionally, various fonts have been showcased in the images to illustrate font
 ### Calibri
 
 <p align="center">
-  <img  src="Sample Images/Calibri.png" alt="Calibri">
+  <img  src="Sample Images/Calibri.png" alt="Calibri" style="width:80%">
 </p>
 
 <p align="center">
-  <img  src="Sample Images/Calibri_Noise.jpg" alt="Calibri">
+  <img  src="Sample Images/Calibri_Noise.jpg" alt="Calibri" style="width:80%">
+    Calibri
 </p>
 
