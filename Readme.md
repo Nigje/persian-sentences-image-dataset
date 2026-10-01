@@ -49,24 +49,18 @@ Release metadata includes labels, checksums, the audit, character inventory, and
 
 ## Git history migration
 
-The dataset archives are distributed through Releases rather than Git.
-The **Clean dataset Git history** workflow backs up the original repository as a
-GitHub Actions artifact, removes `Dataset/*.zip` throughout history, and atomically
-updates branches and tags with explicit expected-commit checks.
-History cleanup [completed successfully](https://github.com/Nigje/persian-sentences-image-dataset/actions/runs/36909504209).
-The backup is available in that run's artifacts for seven days.
-Replace existing clones with fresh clones after this history rewrite.
-GitHub retains the old pull-request reference and may serve cached, unreachable
-objects in a clone pack. The verified fresh clone initially received those old
-objects despite having clean branch/tag history. To discard unreachable local objects:
+Archive history cleanup [completed successfully](https://github.com/Nigje/persian-sentences-image-dataset/actions/runs/36910007819).
+ZIPs were removed from both their historical root-level paths and `Dataset/`
+across branch and tag history. A verified fresh clone contains no original archive
+blobs and its Git pack is 2.59 MiB, compared with approximately 809 MiB before cleanup.
+The release archives are unchanged.
 
-```bash
-git gc --prune=now
-```
-
-This does not delete GitHub's protected pull-request refs or server-side caches.
-Server-side removal requires GitHub-side intervention; a history rewrite alone
-does not guarantee reduced network transfer size immediately.
+The original repository backup is available for seven days in the
+[first cleanup run](https://github.com/Nigje/persian-sentences-image-dataset/actions/runs/36909504209)'s artifacts.
+Existing clones should be replaced with fresh clones to avoid restoring old history.
+The cleanup workflow is now manual-only and does not run on normal pushes.
+GitHub retains protected old pull-request refs and may retain cached old objects;
+those references are outside ordinary branch/tag cleanup and normal Git pushes.
 
 ## Metadata and evaluation
 
