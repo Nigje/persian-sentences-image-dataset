@@ -11,7 +11,7 @@ for r in archives:
     target=a.output/r['filename']; temp=target.with_suffix('.zip.part')
     if target.exists() and hashlib.sha256(target.read_bytes()).hexdigest()==r['sha256']:
         print('Verified existing',target); continue
-    url='https://github.com/Nigje/persian-sentences-image-dataset/releases/download/v1.0.0/'+urllib.parse.quote(r['filename'])
+    url='https://github.com/Nigje/persian-sentences-image-dataset/releases/download/v1.0.0/'+urllib.parse.quote(r.get('release_asset',r['filename']))
     try:
         urllib.request.urlretrieve(url,temp)
         if temp.stat().st_size!=r['bytes'] or hashlib.sha256(temp.read_bytes()).hexdigest()!=r['sha256']:

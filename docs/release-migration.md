@@ -1,17 +1,23 @@
-# Release migration
+# Release migration status
 
-1. Merge the tools PR and run **Prepare dataset release** under GitHub Actions.
-   It reads the original ZIPs from the pinned historical commit, audits them, and
-   uploads them to a draft `v1.0.0` release. No rewritten or regenerated images are used.
-2. Review all eleven ZIP assets and their SHA-256 checksums. Resolve licensing and
-   inspect `data/audit.json` issues before publishing the draft release.
-3. Only after the release is published, run `python scripts/remove_released_archives.py`.
-   The script checks published release asset names and byte sizes against the audit
-   before staging deletion of the repository ZIPs. Commit and review that deletion.
-4. Update the README download section to link the published release.
+Release v1.0.0 is published. All eleven uploaded ZIP assets were verified against
+the audited byte counts and GitHub SHA-256 digests before removing repository copies.
+GitHub changed spaces to dots in asset names; data/audit.json records this mapping.
+Original archive-relative metadata paths and local download filenames remain unchanged.
 
-Deleting files does not shrink existing Git history. Purging binary history requires a
-separate coordinated migration, verified backups, and an explicit force-push decision.
-Do not rewrite shared history as part of this PR. If history is later rewritten,
-archive the pinned source snapshot separately first and update the release workflow;
-its historical commit must remain reachable until migration completes.
+The Clean dataset Git history workflow runs when its definition is pushed to main,
+and can also be started manually. It verifies release assets again, clones all refs,
+saves a complete Git bundle as a seven-day Actions artifact, filters Dataset/*.zip
+throughout history, and atomically updates branches and tags with explicit leases.
+A concurrent update causes the push to fail rather than overwrite new work.
+The v1.0.0 tag is rewritten to the equivalent tree without archive files; uploaded
+release assets are not modified.
+
+Check the workflow result. If branch/tag protection rejects rewriting, change the
+applicable protection for this authorized migration and rerun the workflow.
+After successful cleanup, replace old clones with fresh clones. Old pull-request
+refs cannot be changed by normal Git pushes; GitHub may retain them or cached objects.
+Do not merge old branches back into cleaned history.
+
+The release verification workflow downloads assets from the published release.
+It no longer checks out the historical source commit.

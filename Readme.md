@@ -34,20 +34,29 @@ clean image, not a verified Cartesian product with all 30 backgrounds.
 
 ## Download dataset
 
-The ZIPs are currently available under [Dataset](Dataset/).
-A workflow is prepared to upload the exact archives and checksums to a **draft**
-`v1.0.0` release. A published release is not yet available. See
-[release migration](docs/release-migration.md) for the remaining steps.
-After publication, download all eleven ZIPs for the full dataset, or select a font:
+Download the dataset from [release v1.0.0](https://github.com/Nigje/persian-sentences-image-dataset/releases/tag/v1.0.0).
+Download all eleven ZIPs for the complete dataset, or select a font:
 
 ```bash
 python -m pip install .
 python scripts/download.py --font "B Homa"
 ```
 
-Omit `--font` to download all archives. The downloader verifies SHA-256 and sizes
-against `data/audit.json`. Release metadata will include the manifest, labels,
-checksums, audit, character inventory, and split files.
+Omit `--font` to download every archive. Downloads are saved locally under
+`Dataset/`, which is ignored by Git. The downloader verifies SHA-256 and sizes
+against `data/audit.json` and maps original filenames to GitHub's release asset names.
+Release metadata includes labels, checksums, the audit, character inventory, and splits.
+
+## Git history migration
+
+The dataset archives are distributed through Releases rather than Git.
+The **Clean dataset Git history** workflow backs up the original repository as a
+GitHub Actions artifact, removes `Dataset/*.zip` throughout history, and atomically
+updates branches and tags with explicit expected-commit checks.
+Check that workflow's result before assuming history cleanup has completed.
+Existing clones should be replaced with fresh clones after successful cleanup.
+GitHub may retain old pull-request references and cached objects; server-side
+storage statistics may take time to update.
 
 ## Metadata and evaluation
 
@@ -109,8 +118,7 @@ alone.
 
 Licensing remains pending at the maintainer's request. No data or third-party asset
 reuse license is granted by this update. See [rights status](docs/rights.md).
-`CITATION.cff` supplies a repository citation; cite the dataset version used once a
-release is published.
+`CITATION.cff` supplies a repository citation; cite [release v1.0.0](https://github.com/Nigje/persian-sentences-image-dataset/releases/tag/v1.0.0) when using these data.
 
 ## Limitations and intended use
 
