@@ -1,4 +1,5 @@
 name: Clean dataset Git history
+# Includes legacy root-level archives from early commits.
 on:
   push:
     branches: [main]
