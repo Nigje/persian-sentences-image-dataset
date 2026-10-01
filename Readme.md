@@ -108,6 +108,28 @@ Horizontal intervals are not two-dimensional glyph boxes. Endpoint inclusivity,
 ligature mapping, and the original alignment method are unverified; see
 [annotation specification](docs/annotation-format.md).
 
+### Character boundaries
+
+The red lines in these original examples mark the start and end of each character's
+horizontal interval.
+
+<p align="center">
+  <img src="Sample Images/Chunked sentence.jpg" alt="Persian sentence with character boundaries marked by red lines">
+</p>
+
+<p align="center">
+  <img src="Sample Images/Chunked characters.jpg" alt="Individual Persian characters showing their horizontal boundaries">
+</p>
+
+### Sliding-window example
+
+The original illustration below shows the sentence divided into 10-pixel-wide
+windows for sequential OCR processing.
+
+<p align="center">
+  <img src="Sample Images/Window 10px.png" alt="Persian sentence divided into 10-pixel-wide windows" width="80%">
+</p>
+
 ## Render a new sample
 
 Supply a font you are permitted to use. Pillow must support RAQM for Persian shaping:
