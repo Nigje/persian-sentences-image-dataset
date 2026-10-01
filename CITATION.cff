@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "Please cite this repository and the specific dataset release used."
+title: "Persian Sentences Image Dataset"
+authors:
+  - name: "Nigje"
+repository-code: "https://github.com/Nigje/persian-sentences-image-dataset"
+url: "https://github.com/Nigje/persian-sentences-image-dataset"

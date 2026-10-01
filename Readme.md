@@ -1,59 +1,142 @@
+# Persian Sentences Image Dataset
 
+A legacy synthetic Persian OCR dataset with clean and noisy single-line sentence
+images in eleven fonts. The original generation code and sentence source are not
+available. This repository now includes an archive audit, machine-readable labels,
+fixed sentence splits, validation tools, and a separate reproducible renderer.
 
-## Introduction
+## Verified dataset inventory
 
-The dataset comprises 264 Persian sentences presented in 11 distinct fonts. Each sentence is transformed into an individual image aligned in a single line. Subsequently, these images underwent a combination process with various types of noise to create the final dataset.  The dataset is suitable for training LSTM neural networks in optical character recognition (OCR) tasks.  The LSTM model can effectively learn the sequential patterns within the sentences and fonts. For your reference, please review the Noises directory for a detailed overview of the applied noise types.
+Audited source: `0440c1caf7f07c2d01b5f8fbc4bcee23c7f60225`.
 
-Every sample within the dataset is accompanied by a corresponding text file. These text files contain the character and the coordinates of it present in the image. The format within each line of the text file follows a structured pattern: \<Starting pixel index> _\<Ending pixel index> _\<Character>. This format precisely delineates each character's position within the image matrix.
+| Item | Count |
+| --- | ---: |
+| Font ZIP archives | 11 |
+| Archive bytes | 846,146,595 |
+| Image entries | 5,823 |
+| Readable images | 5,822 |
+| Clean image entries | 2,912 |
+| Noisy image entries | 2,911 |
+| Annotation files | 2,911 |
+| Unique reconstructed transcriptions | 265 |
+| Training sentence IDs | 213 |
+| Validation sentence IDs | 31 |
+| Test sentence IDs | 21 |
 
-In the following image, red lines are used to denote the beginning and ending pixels of each character.
+Arial, Calibri, Tahoma, and Times New Roman each have 264 annotated sentences.
+The seven B fonts each have 265. Tahoma additionally contains
+`Pictures/other3_150.png`, an unreadable image with no annotation. Its metadata row
+is retained with `split=unassigned`; exclude it from model datasets.
+Image dimensions vary; see `data/metadata.csv`. Clean images use PNG and noisy
+images use JPEG. The 30 images in `Noises/` are retained as legacy assets; their
+mapping to noisy examples is unknown. There is one noisy image per annotated
+clean image, not a verified Cartesian product with all 30 backgrounds.
 
+## Download dataset
 
+The ZIPs are currently available under [Dataset](Dataset/).
+A workflow is prepared to upload the exact archives and checksums to a **draft**
+`v1.0.0` release. A published release is not yet available. See
+[release migration](docs/release-migration.md) for the remaining steps.
+After publication, download all eleven ZIPs for the full dataset, or select a font:
 
-<p align="center">
-  <img  src="Sample Images/Chunked sentence.jpg" alt="MainForm">
-</p>
-<p align="center">
-  <img  src="Sample Images/Chunked characters.jpg" alt="MainForm">
-    Character Boundaries
-</p>
+```bash
+python -m pip install .
+python scripts/download.py --font "B Homa"
+```
 
+Omit `--font` to download all archives. The downloader verifies SHA-256 and sizes
+against `data/audit.json`. Release metadata will include the manifest, labels,
+checksums, audit, character inventory, and split files.
 
+## Metadata and evaluation
 
-<p align="center">
-  <img  src="Sample Images/Window 10px.png" alt="LSTM" style="width:80%">
-	<br/>
-	LSTM - window 10px
-</p>
+`data/metadata.csv` contains archive-relative image and annotation paths, sentence
+ID, literal text, font, variant, noise identity (unknown for legacy noisy samples),
+clean counterpart, dimensions, image status, and split. Extract each ZIP preserving
+its internal paths. `data/sentences.tsv` stores reconstructed transcriptions.
+Sentence IDs are SHA-256 hashes of exact UTF-8 labels, with no Unicode normalization.
 
+Splits use a fixed salted hash with approximately 80/10/10 allocation. Identical
+transcriptions stay together across fonts and noise variants. Split files contain
+sentence IDs, not image filenames. Filter the manifest by `split`, and use only
+`image_status=valid` records. These splits measure generalization to held-out text
+within the existing fonts; similar sentences may remain across splits.
 
+Rebuild metadata and validate it:
 
+```bash
+python -m pip install .
+python scripts/index_dataset.py --archives Dataset --output data
+python scripts/validate_dataset.py
+python -m unittest discover -s tests
+```
 
+Python 3.10+ and Pillow are required. The indexer verifies ZIP CRCs and reads image
+headers, but does not guarantee that every image fully decodes or that labels are
+visually correct. The audit records known failures instead of silently dropping them.
 
+## Annotation format
+
+Actual UTF-8 rows use `_character_start_end`, including the leading underscore:
+
+```text
+_ز_3375_3459
+_ی_3333_3375
+_ _3171_3214
+```
+
+Spaces are literal U+0020 characters. Rows are preserved in source order.
+Horizontal intervals are not two-dimensional glyph boxes. Endpoint inclusivity,
+ligature mapping, and the original alignment method are unverified; see
+[annotation specification](docs/annotation-format.md).
+
+## Render a new sample
+
+Supply a font you are permitted to use. Pillow must support RAQM for Persian shaping:
+
+```bash
+python scripts/render.py --text "سلام دنیا" --font /path/to/font.ttf --output generated/sample.png --seed 42 --noise 0.01
+```
+
+This creates a shaped RTL image and a JSON sentence label. Optional seeded
+salt-and-pepper noise is reproducible. This new renderer does not recreate the
+legacy fonts, background composition, or character annotations. No font binaries
+are distributed. The original generation process cannot be recovered from images
+alone.
+
+## Licensing and citation
+
+Licensing remains pending at the maintainer's request. No data or third-party asset
+reuse license is granted by this update. See [rights status](docs/rights.md).
+`CITATION.cff` supplies a repository citation; cite the dataset version used once a
+release is published.
+
+## Limitations and intended use
+
+Use for exploratory Persian OCR and controlled synthetic-image experiments.
+265 underlying transcriptions provide limited linguistic diversity, regardless of
+augmentation. This is not a representative real-document benchmark. Source labels
+are reconstructed, noise identities are unknown, and annotation geometry is
+unverified. Before broader benchmarking, expand and review the corpus to cover
+Persian digits, punctuation, ZWNJ, Arabic/Persian codepoint variants, and optional
+diacritics, and validate against real scanned documents. The character inventory
+reflects observed labels only.
 
 ## Samples
 
 Additionally, various fonts have been showcased in the images to illustrate font diversity within the dataset. For the following samples, the belongs text file is like the following.
 
+```text
+_ز_3375_3459
+_ی_3333_3375
+_ر_3250_3333
+_ا_3214_3250
+_ _3171_3214
 ```
-<Starting pixel index>_<Ending pixel index>_<Character>
 
-ز_3375_3459
-ی_3333_3375
-ر_3250_3333
-ا_3214_3250
-3171_3214_
-س_3080_3171
-ل_3028_3080
-ا_2977_3028
-م_2909_2977
-ت_2787_2909
-2744_2787_
-م_2676_2744
-ر_2592_2676
-د_2534_2592
-م_2476_2534
-```
+See [the annotation specification](docs/annotation-format.md) for parsing and limitations.
+
 
 
 
