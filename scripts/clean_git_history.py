@@ -42,9 +42,13 @@ if a.stage == "backup":
     print("Full backup created before rewriting.")
 else:
     refs = json.loads((a.work / "refs-before.json").read_text())
-    run(["git", "filter-repo", "--path-glob", "Dataset/*.zip", "--invert-paths", "--force"], mirror)
+    paths = ["--path-glob", "Dataset/*.zip"]
+    for archive in audit["archives"]:
+        paths.extend(["--path", archive["filename"]])
+    run(["git", "filter-repo", *paths, "--invert-paths", "--force"], mirror)
     objects = run(["git", "rev-list", "--objects", "--all"], mirror, True).stdout
-    if any(" Dataset/" in line and line.endswith(".zip") for line in objects.splitlines()):
+    archive_names = {x["filename"] for x in audit["archives"]}
+    if any(" " in line and (line.split(" ", 1)[1] in archive_names or (line.split(" ", 1)[1].startswith("Dataset/") and line.endswith(".zip"))) for line in objects.splitlines()):
         raise SystemExit("ZIP paths remain reachable after filtering")
     run(["git", "remote", "add", "origin", url], mirror)
     leases = ["--force-with-lease=" + ref + ":" + sha for ref, sha in refs.items()]
