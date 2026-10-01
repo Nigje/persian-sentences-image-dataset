@@ -1,0 +1,83 @@
+{
+  "archives": [
+    {
+      "filename": "Arial.zip",
+      "bytes": 73157845,
+      "sha256": "fad4e557238a12f78b25a5870fc305f47bad98d9e9a3c79954ea45df7b14d9a0"
+    },
+    {
+      "filename": "B Homa.zip",
+      "bytes": 88388295,
+      "sha256": "97a4c651e6d13d79ac96c8c2f957726d79c5c5a20d7f3a298e861a42738c3ff8"
+    },
+    {
+      "filename": "B Lotus.zip",
+      "bytes": 74126219,
+      "sha256": "07f4fe56d76b0e9eff3aea6312d6dd822f47039e24c3ae767f820fa78adeff94"
+    },
+    {
+      "filename": "B Mitra.zip",
+      "bytes": 69829874,
+      "sha256": "6b9e4666fd5de18aa0862e7ad200857010c565682f8460f73d7cf2be4ee3ba8b"
+    },
+    {
+      "filename": "B Nazanin.zip",
+      "bytes": 72281886,
+      "sha256": "9a6e24e17be2d5740f8a34526bf4b7a0b1996871e205003d3fd313554d719502"
+    },
+    {
+      "filename": "B Traffic.zip",
+      "bytes": 78575052,
+      "sha256": "a76de79921b53117605c9664e20d8590240001f3a79470ddf828823cbe76039b"
+    },
+    {
+      "filename": "B Yagut.zip",
+      "bytes": 80316778,
+      "sha256": "a64f48ad2bbcef65031cf4eded7982d7826b0ec115248cecea19561fdc7103f2"
+    },
+    {
+      "filename": "B Zar.zip",
+      "bytes": 73597273,
+      "sha256": "6cf4dd82050de0c788e61f3b9a2024f68c1ff70dbcd9813c32a0e7d31948b051"
+    },
+    {
+      "filename": "Calibri.zip",
+      "bytes": 80694514,
+      "sha256": "d04850977e64c5704b87fe544a093482a28448820c7783010259c50e1bf2353d"
+    },
+    {
+      "filename": "Tahoma.zip",
+      "bytes": 83046203,
+      "sha256": "635856d5f4f1827579c5af5e1db7ac2914bbbc32284666cb1d6c51aeac39462f"
+    },
+    {
+      "filename": "Times New Roman.zip",
+      "bytes": 72132656,
+      "sha256": "8dea57276089d1e7ca85f8cd484c5051e1fcb8773d975288ebe326d557058735"
+    }
+  ],
+  "images": 5823,
+  "unique_sentences": 265,
+  "annotations": 2911,
+  "variants": {
+    "clean": 2912,
+    "noisy": 2911
+  },
+  "sentence_splits": {
+    "train": 213,
+    "validation": 31,
+    "test": 21
+  },
+  "issues": [
+    {
+      "archive": "Tahoma.zip",
+      "image_path": "Tahoma/Pictures/other3_150.png",
+      "issue": "missing annotation"
+    },
+    {
+      "archive": "Tahoma.zip",
+      "image_path": "Tahoma/Pictures/other3_150.png",
+      "issue": "unreadable image"
+    }
+  ]
+}
