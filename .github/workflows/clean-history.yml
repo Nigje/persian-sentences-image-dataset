@@ -1,9 +1,6 @@
 name: Clean dataset Git history
 # Includes legacy root-level archives from early commits.
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/clean-history.yml']
   workflow_dispatch:
 permissions:
   contents: write
