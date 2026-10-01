@@ -53,10 +53,20 @@ The dataset archives are distributed through Releases rather than Git.
 The **Clean dataset Git history** workflow backs up the original repository as a
 GitHub Actions artifact, removes `Dataset/*.zip` throughout history, and atomically
 updates branches and tags with explicit expected-commit checks.
-Check that workflow's result before assuming history cleanup has completed.
-Existing clones should be replaced with fresh clones after successful cleanup.
-GitHub may retain old pull-request references and cached objects; server-side
-storage statistics may take time to update.
+History cleanup [completed successfully](https://github.com/Nigje/persian-sentences-image-dataset/actions/runs/36909504209).
+The backup is available in that run's artifacts for seven days.
+Replace existing clones with fresh clones after this history rewrite.
+GitHub retains the old pull-request reference and may serve cached, unreachable
+objects in a clone pack. The verified fresh clone initially received those old
+objects despite having clean branch/tag history. To discard unreachable local objects:
+
+```bash
+git gc --prune=now
+```
+
+This does not delete GitHub's protected pull-request refs or server-side caches.
+Server-side removal requires GitHub-side intervention; a history rewrite alone
+does not guarantee reduced network transfer size immediately.
 
 ## Metadata and evaluation
 
