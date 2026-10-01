@@ -5,32 +5,36 @@ images in eleven fonts. The original generation code and sentence source are not
 available. This repository now includes an archive audit, machine-readable labels,
 fixed sentence splits, validation tools, and a separate reproducible renderer.
 
-## Verified dataset inventory
+## Dataset at a glance
 
-Audited source: `0440c1caf7f07c2d01b5f8fbc4bcee23c7f60225`.
+The dataset contains Persian sentences rendered as single-line images in 11 fonts.
+Each usable sample has a clean image, a noisy version, and a text file describing
+the characters and their horizontal positions.
 
-| Item | Count |
+| What is included | Amount |
 | --- | ---: |
-| Font ZIP archives | 11 |
-| Archive bytes | 846,146,595 |
-| Image entries | 5,823 |
-| Readable images | 5,822 |
-| Clean image entries | 2,912 |
-| Noisy image entries | 2,911 |
-| Annotation files | 2,911 |
-| Unique reconstructed transcriptions | 265 |
-| Training sentence IDs | 213 |
-| Validation sentence IDs | 31 |
-| Test sentence IDs | 21 |
+| Fonts | 11 |
+| Different Persian sentences | 265 |
+| Usable images | 5,822 |
+| Clean images | 2,911 |
+| Noisy images | 2,911 |
+| Total ZIP download size | About 846 MB |
 
-Arial, Calibri, Tahoma, and Times New Roman each have 264 annotated sentences.
-The seven B fonts each have 265. Tahoma additionally contains
-`Pictures/other3_150.png`, an unreadable image with no annotation. Its metadata row
-is retained with `split=unassigned`; exclude it from model datasets.
-Image dimensions vary; see `data/metadata.csv`. Clean images use PNG and noisy
-images use JPEG. The 30 images in `Noises/` are retained as legacy assets; their
-mapping to noisy examples is unknown. There is one noisy image per annotated
-clean image, not a verified Cartesian product with all 30 backgrounds.
+The suggested split assigns **213 sentences to training**, **31 to validation**,
+and **21 to testing**. All images of the same sentence stay in the same group,
+including different fonts and noisy versions.
+
+Not every font contains every sentence: Arial, Calibri, Tahoma, and Times New Roman
+each contain 264 sentences, while the seven B fonts each contain 265.
+Sentence texts were recovered from the character annotation files.
+
+The Tahoma archive also contains one extra image that cannot be opened and has no
+label. It is excluded from the usable-image counts above. Details are recorded in
+[data/audit.json](data/audit.json).
+
+Clean images are PNG files; noisy images are JPEG files. Image sizes vary.
+The repository also includes 30 noise backgrounds in `Noises/`, but the original
+background used for each noisy image is unknown.
 
 ## Download dataset
 
